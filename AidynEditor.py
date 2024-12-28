@@ -31,7 +31,7 @@ def file_dialog():
     enemy_name_length = 17
     button_width = 10
 
-    filename = filedialog.askopenfilename(initialdir='/',
+    filename = filedialog.askopenfilename(initialdir='./',
                                           title='Select A File',
                                           filetype=(('z64', '*.z64'), ('all files', '*.*')))
 

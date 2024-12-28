@@ -231,18 +231,15 @@ class TrainerEdit:
             if self.trainer.get() not in self.NOT_SHOPS:
                 address = SHOP_ITEM_ADDRESSES[self.shops.index(self.trainer.get())]
                 f.seek(address)
-                d = f.read(108).hex()
+                d = f.read(106).hex()
 
                 for item in self.shop_item:
+                    towrite.append(int((self.inv_items[item.get()])[:2], 16))
+                    towrite.append(int((self.inv_items[item.get()])[2:4], 16))
                     if self.shop_item.index(item) < 20:
-                        towrite.append(int((self.inv_items[item.get()])[:2], 16))
-                        towrite.append(int((self.inv_items[item.get()])[2:], 16))
                         for x in range(5, 11, 2):
-                            towrite.append(int(d[((self.shop_item.index(item) * 10) + x)] +
-                                               d[((self.shop_item.index(item) * 10) + (x + 1))], 16))
-                    else:
-                        towrite.append(int((self.inv_items[item.get()])[:2], 16))
-                        towrite.append(int((self.inv_items[item.get()])[2:], 16))
+                            towrite.append(int(d[((self.shop_item.index(item) * 10) + (x - 1))] +
+                                               d[((self.shop_item.index(item) * 10) + x)], 16))
 
                 f.seek(address)
                 for item in towrite:
