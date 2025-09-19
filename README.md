@@ -30,7 +30,7 @@ Linux: `sudo apt install python3 python3-tk` (Debian/Ubuntu) or your distro equi
 1. Ensure your Aidyn ROM file has the **`.z64`** extension.
 2. Run the editor:
    ```bash
-   python "AidynEditor Onefile.py"
+   python "AidynEditor.py"
    ```
 3. Click **Browse** → choose your `.z64` ROM.  
    - **Backup** is on by default; keep it enabled unless you know what you’re doing.
